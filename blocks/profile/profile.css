@@ -1,0 +1,22 @@
+.profile {
+  width: 100%;
+  margin: 36px 0 0 0;
+  display: grid;
+  grid-template-columns: 120px minmax(294px, max-content) auto 1fr 150px;
+  grid-template-areas:
+    "photo title edit-button . add-button"
+    "photo subtitle  . . add-button";
+}
+
+@media screen and (max-width: 1023px) {
+  .profile {
+    margin-top: 38px;
+    justify-content: center;
+    grid-template-columns: repeat(2, auto);
+    grid-template-areas: 
+      "photo photo"
+      "title edit-button"
+      "subtitle subtitle"
+      "add-button add-button";
+  }
+}

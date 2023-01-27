@@ -1,0 +1,11 @@
+.place {
+  width: 100%;
+  min-height: 361px;
+  margin: 0;
+  display: grid;
+  grid-template-columns: auto min-content;
+  grid-template-rows: max-content fit-content(80px);
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+}
