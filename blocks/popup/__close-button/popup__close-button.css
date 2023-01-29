@@ -8,12 +8,14 @@
   background-color: transparent;
   background-position: center;
   background-repeat: no-repeat;
+  background-size: contain;
   border: none;
+  cursor: pointer;
   transition: opacity 0.3s linear;
 }
 
 .popup__close-button:hover {
-  opacity: 0.8;
+  opacity: 0.6;
 }
 
 @media screen and (max-width: 767px) {

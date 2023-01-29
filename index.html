@@ -14,41 +14,45 @@
     <main class="content">
       <section class="profile">
         <img class="profile__photo" src="images/cousteau.jpg" alt="Жак-Ив Кусто">
-        <h1 class="profile__title">Жак-Ив Кусто</h1>
-        <p class="profile__subtitle">Исследователь океана</p>
-        <button class="profile__edit-button"></button>
-        <button class="profile__add-button"></button>
+        <div class="profile__info">
+          <div class="profile__info-main">
+            <h1 class="profile__title">Жак-Ив Кусто</h1>
+            <button class="profile__edit-button" type="button" aria-label="Редактировать"></button>
+          </div>
+          <p class="profile__subtitle">Исследователь океана</p>
+        </div>
+        <button class="profile__add-button" type="button" aria-label="Добавить"></button>
       </section>
       <section class="places">
         <div class="place">
           <img class="place__image" src="images/karachayevsk.jpg" alt="Карачаевск">
           <h2 class="place__title">Карачаевск</h2>
-          <button class="place__like-button"></button>
+          <button class="place__like-button" type="button" aria-label="Нравится"></button>
         </div>
         <div class="place">
           <img class="place__image" src="images/elbrus.jpg" alt="Гора Эльбрус">
           <h2 class="place__title">Гора Эльбрус</h2>
-          <button class="place__like-button"></button>
+          <button class="place__like-button" type="button" aria-label="Нравится"></button>
         </div>
         <div class="place">
           <img class="place__image" src="images/dombay.jpg" alt="Домбай">
           <h2 class="place__title">Домбай</h2>
-          <button class="place__like-button"></button>
+          <button class="place__like-button" type="button" aria-label="Нравится"></button>
         </div>
         <div class="place">
           <img class="place__image" src="images/bolgar.jpg" alt="Болгар, Татарстан">
           <h2 class="place__title">Болгар, Татарстан</h2>
-          <button class="place__like-button"></button>
+          <button class="place__like-button" type="button" aria-label="Нравится"></button>
         </div>
         <div class="place">
           <img class="place__image" src="images/kizhi.jpg" alt="Кижи">
           <h2 class="place__title">Кижи</h2>
-          <button class="place__like-button"></button>
+          <button class="place__like-button" type="button" aria-label="Нравится"></button>
         </div>
         <div class="place">
           <img class="place__image" src="images/shikhany.jpg" alt="Шиханы, Бакортостан">
           <h2 class="place__title">Шиханы, Башкортостан</h2>
-          <button class="place__like-button"></button>
+          <button class="place__like-button" type="button" aria-label="Нравится"></button>
         </div>
       </section>
     </main>
@@ -57,16 +61,16 @@
     </footer>
     <div class="popup">
       <div class="popup__container">
-        <button class="popup__close-button"></button>
-        <form class="popup__form">
+        <button class="popup__close-button" type="button" aria-label="Закрыть диалоговое окно"></button>
+        <form class="popup__form" name="Edit_profile">
           <h2 class="popup__title">Редактировать профиль</h2>
-          <input class="popup__name" type="text">
-          <input class="popup__profession" type="text">
-          <input class="popup__submit-button" type="submit" value="Сохранить">
+          <input class="popup__input popup__input_type_name" type="text">
+          <input class="popup__input popup__input_type_profession" type="text">
+          <button class="popup__submit-button" type="submit" aria-label="Сохранить">Сохранить</button>
         </form>
       </div>
     </div>
   </div>
-  <script src="JavaScript/script.js"></script>
+  <script src="scripts/index.js"></script>
 </body>
 </html>
