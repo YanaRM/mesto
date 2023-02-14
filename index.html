@@ -24,48 +24,37 @@
         <button class="profile__add-button" type="button" aria-label="Добавить"></button>
       </section>
       <section class="places">
-        <div class="place">
-          <img class="place__image" src="images/karachayevsk.jpg" alt="Карачаевск">
-          <h2 class="place__title">Карачаевск</h2>
-          <button class="place__like-button" type="button" aria-label="Нравится"></button>
-        </div>
-        <div class="place">
-          <img class="place__image" src="images/elbrus.jpg" alt="Гора Эльбрус">
-          <h2 class="place__title">Гора Эльбрус</h2>
-          <button class="place__like-button" type="button" aria-label="Нравится"></button>
-        </div>
-        <div class="place">
-          <img class="place__image" src="images/dombay.jpg" alt="Домбай">
-          <h2 class="place__title">Домбай</h2>
-          <button class="place__like-button" type="button" aria-label="Нравится"></button>
-        </div>
-        <div class="place">
-          <img class="place__image" src="images/bolgar.jpg" alt="Болгар, Татарстан">
-          <h2 class="place__title">Болгар, Татарстан</h2>
-          <button class="place__like-button" type="button" aria-label="Нравится"></button>
-        </div>
-        <div class="place">
-          <img class="place__image" src="images/kizhi.jpg" alt="Кижи">
-          <h2 class="place__title">Кижи</h2>
-          <button class="place__like-button" type="button" aria-label="Нравится"></button>
-        </div>
-        <div class="place">
-          <img class="place__image" src="images/shikhany.jpg" alt="Шиханы, Бакортостан">
-          <h2 class="place__title">Шиханы, Башкортостан</h2>
-          <button class="place__like-button" type="button" aria-label="Нравится"></button>
-        </div>
+        
       </section>
+      <template id="place-card">
+        <div class="place">
+          <img class="place__image" src="" alt="">
+          <h2 class="place__title"></h2>
+          <button class="place__like-button" type="button" aria-label="Нравится"></button>
+        </div>
+      </template>
     </main>
     <footer class="footer">
       <p class="footer__copyright" lang="en">&copy; 2023 Mesto Russia</p>
     </footer>
-    <div class="popup">
+    <div class="popup popup_type_edit-profile">
       <div class="popup__container">
         <button class="popup__close-button" type="button" aria-label="Закрыть диалоговое окно"></button>
         <form class="popup__form" name="Edit_profile">
           <h2 class="popup__title">Редактировать профиль</h2>
           <input class="popup__input popup__input_type_name" type="text">
           <input class="popup__input popup__input_type_profession" type="text">
+          <button class="popup__submit-button" type="submit" aria-label="Сохранить">Сохранить</button>
+        </form>
+      </div>
+    </div>
+    <div class="popup popup_type_add-cards">
+      <div class="popup__container">
+        <button class="popup__close-button" type="button" aria-label="Закрыть диалоговое окно"></button>
+        <form class="popup__form" name="Edit_profile">
+          <h2 class="popup__title">Новое место</h2>
+          <input class="popup__input popup__input_type_place" type="text">
+          <input class="popup__input popup__input_type_image-link" type="text">
           <button class="popup__submit-button" type="submit" aria-label="Сохранить">Сохранить</button>
         </form>
       </div>
