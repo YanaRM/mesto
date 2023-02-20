@@ -20,6 +20,7 @@ let popupPhotoCaption = popupPhoto.querySelector('.popup__photo-caption');
 let cardTemplate = document.querySelector('#place-card').content;
 let card = cardTemplate.querySelector('.place').cloneNode(true);
 
+
 const initialCards = [
   {
     name: 'Карачаевск',
@@ -75,6 +76,8 @@ popupCloseButton.addEventListener('click', popupClose);
 
 popupAddCards.querySelector('.popup__close-button').addEventListener('click', popupClose);
 
+popupPhoto.querySelector('.popup__close-button').addEventListener('click', popupClose);
+
 
 function editProfile (evt) {
   evt.preventDefault();
@@ -102,6 +105,14 @@ function renderCards() {
       evt.target.classList.toggle('place__like-button_active');});
 
     card.querySelector('.place__remove-button').addEventListener('click', removeCard);
+
+    function popupPhotoOpen() {
+      popupPhoto.classList.add('popup_opened');
+      popupPhoto.querySelector('.popup__photo').src = card.querySelector('.place__image').src;
+      popupPhotoCaption.textContent = card.querySelector('.place__image').alt;
+    };
+
+    card.querySelector('.place__image').addEventListener('click', popupPhotoOpen);
   });
 };
 
@@ -136,21 +147,14 @@ function createCard() {
 card.querySelector('.place__like-button').addEventListener('click', function (evt) {
   evt.target.classList.toggle('place__like-button_active');});
 
-/*function popupPhotoOpen() {
-  popupPhoto.classList.add('popup_opened')
-  
-  popupPhoto.querySelector('.popup__photo').src = card.querySelector('.place__image').src;
-};
-  
-card.querySelector('.place__image').addEventListener('click', popupPhotoOpen);*/
-
-
-card.querySelector('.place__image').onclick = function() {
+function popupPhotoOpen() {
   popupPhoto.classList.add('popup_opened');
-  popupPhoto.querySelector('.popup__photo').src = this.src;
-  popupPhotoCaption.textContent = this.alt;
-}
-  
+  popupPhoto.querySelector('.popup__photo').src = card.querySelector('.place__image').src;
+  popupPhotoCaption.textContent = card.querySelector('.place__image').alt;
+};
+
+card.querySelector('.place__image').addEventListener('click', popupPhotoOpen);
+
 
 function removeCard(evt) {
   evt.target.closest('.place').remove();
