@@ -85,40 +85,40 @@ renderInitialCards();
 function addNewCard (evt) {
   evt.preventDefault();
 
-  card.querySelector('.place__image').src = imageLinkInput.value;
-  card.querySelector('.place__image').alt = placeInput.value;
-  card.querySelector('.place__title').textContent = placeInput.value;
+  const card = createCard({name: placeInput.value,
+    link: imageLinkInput.value,
+    alt: placeInput.value});
 
   placesSection.prepend(card);
 
   closePopup(popupAddCards);
-
-  createCard();
 };
 
 popupAddCards.querySelector('.popup__submit-button').addEventListener('click', addNewCard);
 
-function createCard() {
+function createCard(item) {
   const card = cardTemplate.querySelector('.place').cloneNode(true);
+
+  card.querySelector('.place__image').src = item.link;
+  card.querySelector('.place__image').alt = item.alt;
+  card.querySelector('.place__title').textContent = item.name;
+
+  function openPopupPhoto(item) {
+    openPopup(popupPhoto);
+  
+    popupPhotoImg.src = item.link;
+    popupPhotoImg.alt = item.alt;
+    popupPhotoCaption.textContent = item.name;
+  };
+
+  card.querySelector('.place__like-button').addEventListener('click', function (evt) {
+    evt.target.classList.toggle('place__like-button_active');});
+  card.querySelector('.place__image').addEventListener('click', () => openPopupPhoto(item));
+  card.querySelector('.place__remove-button').addEventListener('click', removeCard);
 
   return card;
 };
 
-card.querySelector('.place__like-button').addEventListener('click', function (evt) {
-  evt.target.classList.toggle('place__like-button_active');});
-
-function openPopupPhoto() {
-  openPopup(popupPhoto);
-
-  popupPhotoImg.src = card.querySelector('.place__image').src;
-  popupPhotoImg.alt = card.querySelector('.place__image').alt;
-  popupPhotoCaption.textContent = card.querySelector('.place__image').alt;
-};
-
-card.querySelector('.place__image').addEventListener('click', openPopupPhoto);
-
 function removeCard(evt) {
   evt.target.closest('.place').remove();
 };
-
-card.querySelector('.place__remove-button').addEventListener('click', removeCard);
