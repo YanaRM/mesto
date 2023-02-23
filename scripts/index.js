@@ -17,20 +17,18 @@ const popupPhoto = document.querySelector('.popup_type_photo');
 const popupPhotoImg = popupPhoto.querySelector('.popup__photo');
 const popupPhotoCaption = popupPhoto.querySelector('.popup__photo-caption');
 
+const popupAddCardsCloseButton = popupAddCards.querySelector('.popup__close-button');
+const popupPhotoCloseButton = popupPhoto.querySelector('.popup__close-button');
+
 const cardTemplate = document.querySelector('#place-card').content;
-const card = cardTemplate.querySelector('.place').cloneNode(true);
 
 function openPopup(item) {
-  nameInput.value = profileName.textContent;
-  jobInput.value = job.textContent;
-
-  imageLinkInput.value = '';
-  placeInput.value = '';
-
   item.classList.add('popup_opened');
 };
 
-profileEditButton.addEventListener('click', () => openPopup(popupEditProfile));
+profileEditButton.addEventListener('click', () => {openPopup(popupEditProfile);
+  nameInput.value = profileName.textContent;
+  jobInput.value = job.textContent;});
 addCardsButton.addEventListener('click', () => openPopup(popupAddCards));
 
 function closePopup(item) {
@@ -38,8 +36,8 @@ function closePopup(item) {
 };
 
 popupCloseButton.addEventListener('click', () => closePopup(popupEditProfile));
-popupAddCards.querySelector('.popup__close-button').addEventListener('click', () => closePopup(popupAddCards));
-popupPhoto.querySelector('.popup__close-button').addEventListener('click', () => closePopup(popupPhoto));
+popupAddCardsCloseButton.addEventListener('click', () => closePopup(popupAddCards));
+popupPhotoCloseButton.addEventListener('click', () => closePopup(popupPhoto));
 
 function editProfile (evt) {
   evt.preventDefault();
@@ -50,33 +48,13 @@ function editProfile (evt) {
   closePopup(popupEditProfile);
 };
 
-popupEditProfile.querySelector('.popup__submit-button').addEventListener('click', editProfile);
+popupEditProfile.addEventListener('submit', editProfile);
 
 function renderInitialCards() {
   initialCards.forEach((item) => {
-    const card = cardTemplate.querySelector('.place').cloneNode(true);
-
-    card.querySelector('.place__image').src = item.link;
-    card.querySelector('.place__image').alt = item.name;
-    card.querySelector('.place__title').textContent = item.name;
+    const card = createCard(item);
 
     placesSection.append(card);
-
-    card.querySelector('.place__like-button').addEventListener('click', function (evt) {
-      evt.target.classList.toggle('place__like-button_active');});
-
-    card.querySelector('.place__remove-button').addEventListener('click', removeCard);
-
-    function openPopupPhoto() {
-      openPopup(popupPhoto);
-
-      popupPhoto.classList.add('popup_opened');
-      popupPhotoImg.src = card.querySelector('.place__image').src;
-      popupPhotoImg.alt = card.querySelector('.place__image').alt;
-      popupPhotoCaption.textContent = card.querySelector('.place__image').alt;
-    };
-
-    card.querySelector('.place__image').addEventListener('click', openPopupPhoto);
   });
 };
 
@@ -91,16 +69,20 @@ function addNewCard (evt) {
 
   placesSection.prepend(card);
 
+  evt.target.reset();
+
   closePopup(popupAddCards);
 };
 
-popupAddCards.querySelector('.popup__submit-button').addEventListener('click', addNewCard);
+popupAddCards.addEventListener('submit', addNewCard);
 
 function createCard(item) {
   const card = cardTemplate.querySelector('.place').cloneNode(true);
 
-  card.querySelector('.place__image').src = item.link;
-  card.querySelector('.place__image').alt = item.alt;
+  const placeImage = card.querySelector('.place__image');
+
+  placeImage.src = item.link;
+  placeImage.alt = item.alt;
   card.querySelector('.place__title').textContent = item.name;
 
   function openPopupPhoto(item) {
@@ -113,7 +95,7 @@ function createCard(item) {
 
   card.querySelector('.place__like-button').addEventListener('click', function (evt) {
     evt.target.classList.toggle('place__like-button_active');});
-  card.querySelector('.place__image').addEventListener('click', () => openPopupPhoto(item));
+  placeImage.addEventListener('click', () => openPopupPhoto(item));
   card.querySelector('.place__remove-button').addEventListener('click', removeCard);
 
   return card;
