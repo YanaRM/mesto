@@ -24,6 +24,8 @@ const cardTemplate = document.querySelector('#place-card').content;
 
 function openPopup(item) {
   item.classList.add('popup_opened');
+
+  item.addEventListener('keydown', closePopupOnEsc);
 };
 
 profileEditButton.addEventListener('click', () => {openPopup(popupEditProfile);
@@ -33,6 +35,17 @@ addCardsButton.addEventListener('click', () => openPopup(popupAddCards));
 
 function closePopup(item) {
   item.classList.remove('popup_opened');
+
+  item.removeEventListener('keydown', closePopupOnEsc);
+
+  const allPopups = Array.from(document.querySelectorAll('.popup'));
+
+  allPopups.forEach((popup) => {
+    popup.addEventListener('click', (evt) => {
+      closePopup;
+      evt.stopPropagation();
+    });
+  });
 };
 
 popupCloseButton.addEventListener('click', () => closePopup(popupEditProfile));
@@ -103,4 +116,10 @@ function createCard(item) {
 
 function removeCard(evt) {
   evt.target.closest('.place').remove();
+};
+
+function closePopupOnEsc (evt) {
+  if (evt.key === 'Esc') {
+    closePopup;
+  };
 };
