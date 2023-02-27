@@ -1,14 +1,14 @@
 const showInputError = (formElements, inputElement, errorMessage) => {
   const errorElement = formElements.querySelector(`.${inputElement.id}-error`);
-  inputElement.classList.add('popup__input_type_error');
+  inputElement.classList.add(inputErrorClass);
   errorElement.textContent = errorMessage;
-  errorElement.classList.add('popup__input-error_active');
+  errorElement.classList.add(errorClass);
 };
 
 const hideInputError = (formElements, inputElement) => {
   const errorElement = formElements.querySelector(`.${inputElement.id}-error`);
-  inputElement.classList.remove('popup__input_type_error');
-  errorElement.classList.remove('popup__input-error_active');
+  inputElement.classList.remove(inputErrorClass);
+  errorElement.classList.remove(errorClass);
   errorElement.textContent = '';
 };
 
@@ -21,8 +21,8 @@ const checkInputValidity = (formElements, inputElement) => {
 };
 
 const setEventListeners = (formElements) => {
-  const inputList = Array.from(formElements.querySelectorAll('.popup__input'));
-  const buttonElement = formElements.querySelector('.popup__submit-button');
+  const inputList = Array.from(formElements.querySelectorAll(inputSelector));
+  const buttonElement = formElements.querySelector(submitButtonSelector);
   toggleButtonState(inputList, buttonElement);
   
   inputList.forEach((inputElement) => {
@@ -34,8 +34,11 @@ const setEventListeners = (formElements) => {
 };
 
 const enableValidation = () => {
-  const formList = Array.from(document.querySelectorAll('.popup__form'));
+  const formList = Array.from(document.querySelectorAll(formSelector));
   formList.forEach((formElements) => {
+    formElements.addEventListener('submit', (evt) => {
+      evt.preventDefault();
+    });
     setEventListeners(formElements);
   });
 };
@@ -58,10 +61,10 @@ function hasInvalidInput(inputList) {
 
 function toggleButtonState(inputList, buttonElement) {
   if (hasInvalidInput(inputList)) {
-    buttonElement.classList.add('popup__submit-button_disabled');
+    buttonElement.classList.add(inactiveButtonClass);
     buttonElement.disabled = true;
   } else {
-    buttonElement.classList.remove('popup__submit-button_disabled');
+    buttonElement.classList.remove(inactiveButtonClass);
     buttonElement.removeAttribute('disabled');
   };
 };

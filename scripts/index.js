@@ -3,7 +3,6 @@ const addCardsButton = document.querySelector('.profile__add-button');
 const profileName = document.querySelector('.profile__title');
 const job = document.querySelector('.profile__subtitle');
 const popupCloseButton = document.querySelector('.popup__close-button');
-const formElements = document.querySelector('.popup__form');
 const nameInput = document.querySelector('.popup__input_type_name');
 const jobInput = document.querySelector('.popup__input_type_profession');
 const allPopups = document.querySelectorAll('.popup');
@@ -27,6 +26,25 @@ function openPopup(item) {
   item.classList.add('popup_opened');
 
   document.addEventListener('keydown', closePopupOnEsc);
+};
+
+function openPopupEditProfile() {
+  openPopup(popupEditProfile);
+
+  nameInput.value = profileName.textContent;
+  jobInput.value = job.textContent;
+
+  popupEditProfile('.popup__submit-button').setAttribute('disabled', true);
+  popupEditProfile('.popup__submit-button').classList.add('popup__submit-button_disabled');
+  popupEditProfile.querySelector('.popup__input-error').classList.remove('popup__input-error_active');
+};
+
+function openPopupAddCards() {
+  openPopup(popupAddCards);
+
+  popupAddCards.querySelector('.popup__submit-button').setAttribute('disabled', true);
+  popupAddCards.querySelector('.popup__submit-button').classList.add('popup__submit-button_disabled');
+  popupAddCards.querySelector('.popup__input-error').classList.remove('popup__input-error_active');
 };
 
 function closePopup(item) {
@@ -111,10 +129,8 @@ allPopups.forEach((item) => {
   });
 });
 
-profileEditButton.addEventListener('click', () => {openPopup(popupEditProfile);
-  nameInput.value = profileName.textContent;
-  jobInput.value = job.textContent;});
-addCardsButton.addEventListener('click', () => openPopup(popupAddCards));
+profileEditButton.addEventListener('click', openPopupEditProfile);
+addCardsButton.addEventListener('click', openPopupAddCards);
 
 popupCloseButton.addEventListener('click', () => closePopup(popupEditProfile));
 popupAddCardsCloseButton.addEventListener('click', () => closePopup(popupAddCards));
