@@ -34,17 +34,13 @@ function openPopupEditProfile() {
   nameInput.value = profileName.textContent;
   jobInput.value = job.textContent;
 
-  popupEditProfile('.popup__submit-button').setAttribute('disabled', true);
-  popupEditProfile('.popup__submit-button').classList.add('popup__submit-button_disabled');
-  popupEditProfile.querySelector('.popup__input-error').classList.remove('popup__input-error_active');
+  toggleButtonState(config, inputList, buttonElement);
 };
 
 function openPopupAddCards() {
   openPopup(popupAddCards);
 
-  popupAddCards.querySelector('.popup__submit-button').setAttribute('disabled', true);
-  popupAddCards.querySelector('.popup__submit-button').classList.add('popup__submit-button_disabled');
-  popupAddCards.querySelector('.popup__input-error').classList.remove('popup__input-error_active');
+  toggleButtonState(config, inputList, buttonElement);
 };
 
 function closePopup(item) {
