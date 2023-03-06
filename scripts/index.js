@@ -34,13 +34,21 @@ function openPopupEditProfile() {
   nameInput.value = profileName.textContent;
   jobInput.value = job.textContent;
 
-  toggleButtonState(config, inputList, buttonElement);
+  /*toggleButtonState(config, inputList, buttonElement);*/
 };
 
 function openPopupAddCards() {
   openPopup(popupAddCards);
 
-  toggleButtonState(config, inputList, buttonElement);
+  /*popupAddCards.querySelector('.popup__submit-button').setAttribute('disabled', true);
+  popupAddCards.querySelector('.popup__submit-button').classList.add('popup__submit-button_disabled');*/
+
+  /*toggleButtonState(config, inputList, buttonElement);*/
+  
+  disableSubmitButton(config, buttonElement);
+  /* Простите, но способ, предложенный Вами, не работает. index.js и validate.js не видят переменную buttonElement внутри
+  другой функции, пришлось объявить её в глобальной области видимости. Но теперь функция находит только первую попавшуюся
+  кнопку и игнорирует кнопку из формы добавления новых карточек. Из-за чего теперь снова можно добавлять пустые карточки */
 };
 
 function closePopup(item) {
