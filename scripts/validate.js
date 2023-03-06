@@ -60,8 +60,7 @@ function hasInvalidInput(inputList) {
   });
 };
 
-function disableSubmitButton(config) {
-  const buttonElement = formElement.querySelector(config.submitButtonSelector);
+function disableSubmitButton(config, buttonElement) {
   buttonElement.classList.add(config.inactiveButtonClass);
   buttonElement.disabled = true;
 };
