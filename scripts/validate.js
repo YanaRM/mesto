@@ -7,8 +7,8 @@ const config = {
   errorClass: 'popup__input-error_active'
 };
 
-const formElement = document.querySelector(config.formSelector);
-const buttonElement = formElement.querySelector(config.submitButtonSelector);
+/*const formElement = document.querySelector(config.formSelector);
+const buttonElement = formElement.querySelector(config.submitButtonSelector);*/
 
 const showInputError = (config, formElement, inputElement, errorMessage) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
@@ -34,7 +34,7 @@ const checkInputValidity = (config, formElement, inputElement) => {
 
 const setEventListeners = (config, formElement) => {
   const inputList = Array.from(formElement.querySelectorAll(config.inputSelector));
-  /*const buttonElement = formElement.querySelector(config.submitButtonSelector);*/
+  const buttonElement = formElement.querySelector(config.submitButtonSelector);
   toggleButtonState(config, inputList, buttonElement);
 
   inputList.forEach((inputElement) => {
@@ -68,7 +68,7 @@ function disableSubmitButton(config, buttonElement) {
 function enableSubmitButton(config, buttonElement) {
   buttonElement.classList.remove(config.inactiveButtonClass);
   buttonElement.removeAttribute('disabled');
-}
+};
 
 function toggleButtonState(config, inputList, buttonElement) {
   if (hasInvalidInput(inputList)) {
