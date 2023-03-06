@@ -45,7 +45,7 @@ function openPopupAddCards() {
 
   /*toggleButtonState(config, inputList, buttonElement);*/
   
-  /*disableSubmitButton(config, buttonElement);*/
+  disableSubmitButton(config, buttonElement);
 
   /* Простите, но способ, предложенный Вами, не работает. index.js и validate.js не видят переменную buttonElement внутри
   другой функции, пришлось объявить её в глобальной области видимости. Но теперь функция находит только первую попавшуюся
