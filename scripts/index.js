@@ -40,8 +40,8 @@ function openPopupEditProfile() {
 function openPopupAddCards() {
   openPopup(popupAddCards);
 
-  popupAddCards.querySelector('.popup__submit-button').setAttribute('disabled', true);
-  popupAddCards.querySelector('.popup__submit-button').classList.add('popup__submit-button_disabled');
+  /*popupAddCards.querySelector('.popup__submit-button').setAttribute('disabled', true);
+  popupAddCards.querySelector('.popup__submit-button').classList.add('popup__submit-button_disabled');*/
 
   /*toggleButtonState(config, inputList, buttonElement);*/
   
