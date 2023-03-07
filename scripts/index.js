@@ -39,26 +39,8 @@ function openPopupEditProfile() {
 
 function openPopupAddCards() {
   openPopup(popupAddCards);
-
-  /*popupAddCards.querySelector('.popup__submit-button').setAttribute('disabled', true);
-  popupAddCards.querySelector('.popup__submit-button').classList.add('popup__submit-button_disabled');*/
-
-  /*toggleButtonState(config, inputList, buttonElement);*/
   
-  disableSubmitButton(config, buttonElement);
-
-  /* Простите, но способ, предложенный Вами, не работает. index.js и validate.js не видят переменную buttonElement внутри
-  другой функции, пришлось объявить её в глобальной области видимости. Но теперь функция находит только первую попавшуюся
-  кнопку и игнорирует кнопку из формы добавления новых карточек. Из-за чего теперь снова можно добавлять пустые карточки.
-  У меня до этого был нормальный, рабочий код, все работало отлично. Теперь у меня добавилось много лишних строчек кода,
-  который не работает, как надо. Опытный наставник в вебинаре использовал точно такой же способ отключения кнопки
-  через setAttribute, многие студенты использовали такой способ, и им засчитали такие работы */
-
-  /* Теперь я убрала объявление переменной buttonElement из области глобальной видимости и поместила её внутрь
-  функции setEventListeners, как мне посоветовали наставник и другой студент. Сейчас у меня кнопка сабмита при
-  первом открытии попапа неактивна, а после добавления первой карточки снова есть возможность добавлять пустые карточки.
-  Этот способ НЕ работает, еще и консоль выдает ошибку. А вот setAttribute работал отлично, как и у наставника,
-  который вел вебинар. Я искренне не понимаю, почему вы засчитываете мне за ошибку то, что ошибкой не является */
+  disableSubmitButton(config, popupAddCards.querySelector('.popup__submit-button'));
 };
 
 function closePopup(item) {
