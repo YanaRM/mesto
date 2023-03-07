@@ -33,8 +33,6 @@ function openPopupEditProfile() {
 
   nameInput.value = profileName.textContent;
   jobInput.value = job.textContent;
-
-  /*toggleButtonState(config, inputList, buttonElement);*/
 };
 
 function openPopupAddCards() {
