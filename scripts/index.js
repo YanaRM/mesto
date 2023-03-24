@@ -33,12 +33,21 @@ function openPopupEditProfile() {
 
   nameInput.value = profileName.textContent;
   jobInput.value = job.textContent;
+
+  resetForm(config, popupEditProfile.querySelector('.popup__form'),
+  popupEditProfile.querySelector('.popup__input'));
 };
 
 function openPopupAddCards() {
   openPopup(popupAddCards);
+
+  placeInput.value = '';
+  imageLinkInput.value = '';
   
   disableSubmitButton(config, popupAddCards.querySelector('.popup__submit-button'));
+
+  resetForm(config, popupAddCards.querySelector('.popup__form'),
+  popupAddCards.querySelector('.popup__input'));
 };
 
 function closePopup(item) {

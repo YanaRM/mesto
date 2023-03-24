@@ -74,3 +74,8 @@ function toggleButtonState(config, inputList, buttonElement) {
     enableSubmitButton(config, buttonElement);
   };
 };
+
+function resetForm(config, formElement, inputElement) {
+  const inputList = Array.from(formElement.querySelectorAll(config.inputSelector));
+  inputList.forEach((inputElement) => {hideInputError(config, formElement, inputElement);})
+}
