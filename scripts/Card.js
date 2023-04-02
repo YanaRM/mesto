@@ -9,7 +9,7 @@ export default class Card {
 
   _getTemplate() {
     const cardElement = document
-    .querySelector('#place-card')
+    .querySelector(this._templateSelector)
     .content
     .querySelector('.place')
     .cloneNode(true);
@@ -21,23 +21,30 @@ export default class Card {
     this._element = this._getTemplate();
 
     this._placeImage = this._element.querySelector('.place__image');
-
-    this._element.querySelector('.place__image').src = this._link;
-    this._element.querySelector('.place__image').alt = this._title;
-    this._element.querySelector('.place__title').textContent = this._title;
     this._setEventListeners();
+
+    this._placeImage.src = this._link;
+    this._placeImage.alt = this._title;
+    this._element.querySelector('.place__title').textContent = this._title;
 
     return this._element;
   };
+
+  _toggleLike(evt) {
+    evt.target.classList.toggle('place__like-button_active');
+  };
+
+  _handleImageClick() {
+    this._openPopupPhoto(this._title, this._link);
+  }
 
   _removeCard() {
     this._element.remove();
   };
 
   _setEventListeners = () => {
-    this._element.querySelector('.place__like-button').addEventListener('click', (evt) => {
-      evt.target.classList.toggle('place__like-button_active');});
-    this._placeImage.addEventListener('click', () => this._openPopupPhoto(this._title, this._link));
+    this._element.querySelector('.place__like-button').addEventListener('click', this._toggleLike);
+    this._placeImage.addEventListener('click', () => this._handleImageClick());
     this._element.querySelector('.place__remove-button').addEventListener('click', () => this._removeCard());
   }
 }

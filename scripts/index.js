@@ -6,7 +6,7 @@ const profileEditButton = document.querySelector('.profile__edit-button');
 const addCardsButton = document.querySelector('.profile__add-button');
 const profileName = document.querySelector('.profile__title');
 const job = document.querySelector('.profile__subtitle');
-const popupCloseButton = document.querySelector('.popup__close-button');
+const popupCloseButton = document.querySelectorAll('.popup__close-button');
 const nameInput = document.querySelector('.popup__input_type_name');
 const jobInput = document.querySelector('.popup__input_type_profession');
 const allPopups = document.querySelectorAll('.popup');
@@ -37,20 +37,15 @@ function openPopupEditProfile() {
   nameInput.value = profileName.textContent;
   jobInput.value = job.textContent;
 
-  /*resetForm(config, popupEditProfile.querySelector('.popup__form'),
-  popupEditProfile.querySelector('.popup__input'));*/
+  editProfileValidation.resetValidation();
 };
 
 function openPopupAddCards() {
   openPopup(popupAddCards);
 
-  placeInput.value = '';
-  imageLinkInput.value = '';
+  popupAddCards.querySelector('.popup__form').reset();
   
-  /*disableSubmitButton(config, popupAddCards.querySelector('.popup__submit-button'));
-
-  resetForm(config, popupAddCards.querySelector('.popup__form'),
-  popupAddCards.querySelector('.popup__input'));*/
+  addCardsValidation.resetValidation();
 };
 
 function closePopup(item) {
@@ -126,9 +121,11 @@ addCardsValidation.enableValidation();
 
 profileEditButton.addEventListener('click', openPopupEditProfile);
 addCardsButton.addEventListener('click', openPopupAddCards);
-/*placeImage.addEventListener('click', openPopupPhoto);*/
 
-popupCloseButton.addEventListener('click', () => closePopup(popupEditProfile));
+popupCloseButton.forEach((button) => {
+  const popup = button.closest('.popup');
+  button.addEventListener('click', () => closePopup(popup));
+})
 popupAddCardsCloseButton.addEventListener('click', () => closePopup(popupAddCards));
 popupPhotoCloseButton.addEventListener('click', () => closePopup(popupPhoto));
 
