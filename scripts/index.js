@@ -6,12 +6,13 @@ const profileEditButton = document.querySelector('.profile__edit-button');
 const addCardsButton = document.querySelector('.profile__add-button');
 const profileName = document.querySelector('.profile__title');
 const job = document.querySelector('.profile__subtitle');
-const popupCloseButton = document.querySelectorAll('.popup__close-button');
+const popupCloseButtons = document.querySelectorAll('.popup__close-button');
 const nameInput = document.querySelector('.popup__input_type_name');
 const jobInput = document.querySelector('.popup__input_type_profession');
 const allPopups = document.querySelectorAll('.popup');
 const popupEditProfile = document.querySelector('.popup_type_edit-profile');
 const popupAddCards = document.querySelector('.popup_type_add-cards');
+const popupAddCardsForm = popupAddCards.querySelector('.popup__form');
 const placeInput = popupAddCards.querySelector('.popup__input_type_place');
 const imageLinkInput = popupAddCards.querySelector('.popup__input_type_image-link');
 const popupSubmitButton = document.querySelector('.popup__submit-button');
@@ -21,9 +22,6 @@ const placeImage = document.querySelector('.place__image');
 const popupPhoto = document.querySelector('.popup_type_photo');
 const popupPhotoImg = popupPhoto.querySelector('.popup__photo');
 const popupPhotoCaption = popupPhoto.querySelector('.popup__photo-caption');
-
-const popupAddCardsCloseButton = popupAddCards.querySelector('.popup__close-button');
-const popupPhotoCloseButton = popupPhoto.querySelector('.popup__close-button');
 
 function openPopup(item) {
   item.classList.add('popup_opened');
@@ -43,7 +41,7 @@ function openPopupEditProfile() {
 function openPopupAddCards() {
   openPopup(popupAddCards);
 
-  popupAddCards.querySelector('.popup__form').reset();
+  popupAddCardsForm.reset();
   
   addCardsValidation.resetValidation();
 };
@@ -122,12 +120,10 @@ addCardsValidation.enableValidation();
 profileEditButton.addEventListener('click', openPopupEditProfile);
 addCardsButton.addEventListener('click', openPopupAddCards);
 
-popupCloseButton.forEach((button) => {
+popupCloseButtons.forEach((button) => {
   const popup = button.closest('.popup');
   button.addEventListener('click', () => closePopup(popup));
-})
-popupAddCardsCloseButton.addEventListener('click', () => closePopup(popupAddCards));
-popupPhotoCloseButton.addEventListener('click', () => closePopup(popupPhoto));
+});
 
 popupEditProfile.addEventListener('submit', editProfile);
 popupAddCards.addEventListener('submit', addNewCard);
