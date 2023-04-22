@@ -1,11 +1,11 @@
 export default class Card {
-  constructor(data, templateSelector, openPopupPhoto) {
+  constructor(data, templateSelector, /*openPopupPhoto,*/ handleCardClick) {
     this._templateSelector = templateSelector;
     this._title = data.title;
     this._link = data.link;
     this._image = data.image;
-    this._openPopupPhoto = openPopupPhoto;
-  }
+    this._handleCardClick = handleCardClick;
+  };
 
   _getTemplate() {
     const cardElement = document
@@ -15,7 +15,7 @@ export default class Card {
     .cloneNode(true);
 
     return cardElement;
-  }
+  };
 
   generateCard() {
     this._element = this._getTemplate();
@@ -34,17 +34,13 @@ export default class Card {
     evt.target.classList.toggle('place__like-button_active');
   };
 
-  _handleImageClick() {
-    this._openPopupPhoto(this._title, this._link);
-  }
-
   _removeCard() {
     this._element.remove();
   };
 
   _setEventListeners = () => {
     this._element.querySelector('.place__like-button').addEventListener('click', this._toggleLike);
-    this._placeImage.addEventListener('click', () => this._handleImageClick());
+    this._placeImage.addEventListener('click', () => this._handleCardClick());
     this._element.querySelector('.place__remove-button').addEventListener('click', () => this._removeCard());
-  }
-}
+  };
+};
