@@ -4,16 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title lang="en">Mesto</title>
-  <link rel="stylesheet" href="pages/index.css">
+  <!-- <link rel="stylesheet" href="pages/index.css"> -->
 </head>
 <body class="root">
   <div class="page">
     <header class="header">
-      <img class="header__logo" src="images/logo.svg" alt="Логотип">
+      <img class="header__logo" src="<%=require('./images/logo.svg')%>" alt="Логотип">
     </header>
     <main class="content">
       <section class="profile">
-        <img class="profile__photo" src="images/cousteau.jpg" alt="Жак-Ив Кусто">
+        <img class="profile__photo" src="<%=require('./images/cousteau.jpg')%>" alt="Жак-Ив Кусто">
         <div class="profile__info">
           <div class="profile__info-main">
             <h1 class="profile__title">Жак-Ив Кусто</h1>
@@ -28,7 +28,7 @@
       </section>
       <template id="place-card">
         <div class="place">
-          <img class="place__image" src=" " alt="">
+          <img class="place__image" src="<%=require(' ')%>" alt="">
           <div class="place__title-container">
             <h2 class="place__title"></h2>
             <button class="place__like-button" type="button" aria-label="Нравится"></button>
@@ -82,14 +82,11 @@
     <div class="popup popup_type_photo">
       <div class="popup__photo-container">
         <button class="popup__close-button" type="button" aria-label="Закрыть диалоговое окно"></button>
-        <img class="popup__photo" src=" " alt="">
+        <img class="popup__photo" src="<%=require(' ')%>" alt="">
         <p class="popup__photo-caption"></p>
       </div>
     </div>
   </div>
-  <!-- <script type="module" src="scripts/constants.js" defer></script>
-  <script type="module" src="scripts/Card.js" defer></script>
-  <script type="module" src="scripts/FormValidator.js" defer></script> -->
-  <script type="module" src="pages/index.js" defer></script>
+  <!-- <script type="module" src="pages/index.js" defer></script> -->
 </body>
 </html>

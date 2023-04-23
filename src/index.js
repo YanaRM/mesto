@@ -6,6 +6,8 @@ import PopupWithImage from '../components/PopupWithImage.js';
 import Section from '../components/Section.js';
 import UserInfo from '../components/UserInfo.js';
 
+import '../pages/index.css';
+
 const profileEditButton = document.querySelector('.profile__edit-button');
 const addCardsButton = document.querySelector('.profile__add-button');
 const profileName = document.querySelector('.profile__title');
