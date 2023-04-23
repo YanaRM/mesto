@@ -5,7 +5,7 @@
   font-display: swap;
   src: url(./Inter-Regular.woff2) format('woff2'),
        url(./Inter-Regular.woff) format('woff'),
-       url(./fonts/Inter.ttf) format('truetype');
+       url(./Inter.ttf) format('truetype');
 }
 
 @font-face {

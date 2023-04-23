@@ -1,12 +1,12 @@
-import Card  from '../components/Card.js';
-import { initialCards } from '../utils/constants.js';
-import { config, FormValidator } from '../components/FormValidator.js';
-import PopupWithForm from '../components/PopupWithForm.js';
-import PopupWithImage from '../components/PopupWithImage.js';
-import Section from '../components/Section.js';
-import UserInfo from '../components/UserInfo.js';
+import Card  from '../src/components/Card.js';
+import { initialCards } from '../src/utils/constants.js';
+import { config, FormValidator } from '../src/components/FormValidator.js';
+import PopupWithForm from '../src/components/PopupWithForm.js';
+import PopupWithImage from '../src/components/PopupWithImage.js';
+import Section from '../src/components/Section.js';
+import UserInfo from '../src/components/UserInfo.js';
 
-import '../pages/index.css';
+import '../src/pages/index.css';
 
 const profileEditButton = document.querySelector('.profile__edit-button');
 const addCardsButton = document.querySelector('.profile__add-button');
