@@ -72,8 +72,8 @@ popupPhoto.setEventListeners();
   popupEditProfile.close();
 }*/
 
-function handleCardClick() {
-  popupPhoto.open();
+function handleCardClick(title, link) {
+  popupPhoto.open(title, link);
 };
 
 const editProfileValidation = new FormValidator(config, document.querySelector('.popup_type_edit-profile')
