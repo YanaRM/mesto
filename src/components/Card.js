@@ -3,7 +3,6 @@ export default class Card {
     this._templateSelector = templateSelector;
     this._title = data.title;
     this._link = data.link;
-    /*this._image = data.image;*/
     this._handleCardClick = handleCardClick;
   };
 
