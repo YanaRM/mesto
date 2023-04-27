@@ -53,7 +53,7 @@ function handleAddCardsSubmitForm(data) {
     link: data.link,
     title: data.title,
   })
-  initialCardsRender.addItem(cardElement)
+  initialCardsRender.addItem(cardElement);
 };
 
 popupEditProfile.setEventListeners();
