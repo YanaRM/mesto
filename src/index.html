@@ -13,7 +13,9 @@
     </header>
     <main class="content">
       <section class="profile">
-        <img class="profile__photo" src="<%=require('./images/cousteau.jpg')%>" alt="Жак-Ив Кусто">
+        <div class="profile__photo-container">
+          <img class="profile__photo" src="<%=require('./images/cousteau.jpg')%>" alt="Жак-Ив Кусто">
+        </div>
         <div class="profile__info">
           <div class="profile__info-main">
             <h1 class="profile__title">Жак-Ив Кусто</h1>
@@ -84,6 +86,30 @@
         <button class="popup__close-button" type="button" aria-label="Закрыть диалоговое окно"></button>
         <img class="popup__photo" src=" " alt="">
         <p class="popup__photo-caption"></p>
+      </div>
+    </div>
+    <div class="popup popup_type_edit-avatar">
+      <div class="popup__container">
+        <button class="popup__close-button" type="button" aria-label="Закрыть диалоговое окно"></button>
+        <form class="popup__form" name="edit-avatar" novalidate>
+          <h2 class="popup__title">Обновить аватар</h2>
+          <div class="popup__input-container">
+            <input class="popup__input popup__input_type_avatar-link" id="link-input"
+            type="url" name="link" placeholder="Ссылка на картинку" required
+            title="Введите ссылку">
+            <span class="popup__input-error link-input-error"></span>
+          </div>
+          <button class="popup__submit-button" type="submit" aria-label="Сохранить">Сохранить</button>
+        </form>
+      </div>
+    </div>
+    <div class="popup popup_type_delete-card">
+      <div class="popup__container">
+        <button class="popup__close-button" type="button" aria-label="Закрыть диалоговое окно"></button>
+        <form class="popup__form" name="delete-card" novalidate>
+          <h2 class="popup__title">Вы уверены?</h2>
+          <button class="popup__submit-button" type="submit" aria-label="Подтвердить">Да</button>
+        </form>
       </div>
     </div>
   </div>
