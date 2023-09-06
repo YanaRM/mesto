@@ -1,7 +1,8 @@
 .place__like-button {
   width: 22px;
   height: 19px;
-  margin: 30px 20px 30px auto;
+  margin: 22px 0 3px 0;
+  padding: 0;
   background-image: url(../../../images/like-button.svg);
   background-repeat: no-repeat;
   background-position: center;

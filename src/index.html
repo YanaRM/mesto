@@ -15,6 +15,7 @@
       <section class="profile">
         <div class="profile__photo-container">
           <img class="profile__photo" src="<%=require('./images/cousteau.jpg')%>" alt="Жак-Ив Кусто">
+          <div class="profile__avatar-edit-button"></div>
         </div>
         <div class="profile__info">
           <div class="profile__info-main">
@@ -33,7 +34,10 @@
           <img class="place__image" src=" " alt="">
           <div class="place__title-container">
             <h2 class="place__title"></h2>
-            <button class="place__like-button" type="button" aria-label="Нравится"></button>
+            <div class="place__like">
+              <button class="place__like-button" type="button" aria-label="Нравится"></button>
+              <p class="place__like-counter">0</p>
+            </div>
           </div>
           <button class="place__remove-button" type="button" aria-label="Удалить"></button>
         </div>
@@ -54,7 +58,7 @@
             required title="Количество символов должно быть не меньше двух и не больше сорока">
             <span class="popup__input-error name-input-error"></span>
             <input class="popup__input popup__input_type_profession" id="profession-input"
-            type="text" name="job" placeholder="Профессия" minlength="2" maxlength="200" required
+            type="text" name="about" placeholder="Профессия" minlength="2" maxlength="200" required
             title="Количество символов должно быть не меньше двух и не больше двухсот">
             <span class="popup__input-error profession-input-error"></span>
           </div>
@@ -69,7 +73,7 @@
           <h2 class="popup__title">Новое место</h2>
           <div class="popup__input-container">
             <input class="popup__input popup__input_type_place" id="place-name-input"
-            type="text" name="title" placeholder="Название" minlength="2" maxlength="30"
+            type="text" name="name" placeholder="Название" minlength="2" maxlength="30"
             required title="Количество символов должно быть не меньше двух и не больше сорока">
             <span class="popup__input-error place-name-input-error"></span>
             <input class="popup__input popup__input_type_image-link" id="link-input"
@@ -89,13 +93,13 @@
       </div>
     </div>
     <div class="popup popup_type_edit-avatar">
-      <div class="popup__container">
+      <div class="popup__container popup__container_type_edit-avatar">
         <button class="popup__close-button" type="button" aria-label="Закрыть диалоговое окно"></button>
         <form class="popup__form" name="edit-avatar" novalidate>
           <h2 class="popup__title">Обновить аватар</h2>
           <div class="popup__input-container">
             <input class="popup__input popup__input_type_avatar-link" id="link-input"
-            type="url" name="link" placeholder="Ссылка на картинку" required
+            type="url" name="avatar" placeholder="Ссылка на картинку" required
             title="Введите ссылку">
             <span class="popup__input-error link-input-error"></span>
           </div>
@@ -104,7 +108,7 @@
       </div>
     </div>
     <div class="popup popup_type_delete-card">
-      <div class="popup__container">
+      <div class="popup__container popup__container_type_delete-card">
         <button class="popup__close-button" type="button" aria-label="Закрыть диалоговое окно"></button>
         <form class="popup__form" name="delete-card" novalidate>
           <h2 class="popup__title">Вы уверены?</h2>
