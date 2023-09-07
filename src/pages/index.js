@@ -23,13 +23,13 @@ const api = new Api(apiData);
 
 Promise.all([api.getUserData(), api.getInitialCards()])
   .then(([userData, cardsData]) => {
-    userId = userInfo._id;
+    userId = userData._id;
 
     userInfo.setUserInfo(userData);
     userInfo.setProfilePhoto(userData);
 
-    initialCardsRender.renderItems(cardsData);
     cardsData.reverse();
+    initialCardsRender.renderItems(cardsData);
     console.log(cardsData)
   })
   .catch((err) => {
