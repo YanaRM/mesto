@@ -55,10 +55,6 @@ export default class Card {
     this._element.querySelector('.place__like-counter').textContent = this._dataLikes.length;
   }
 
-  /*_toggleLike(evt) {
-    evt.target.classList.toggle('place__like-button_active');
-  };*/
-
   putLike() {
     this._element.querySelector('.place__like-button').classList.add('place__like-button_active')
   }
@@ -68,7 +64,7 @@ export default class Card {
   }
 
   _hideRemoveButton() {
-    if (this._ownerId !== '7200b04eb4f10fab9525ac42') {
+    if (this._ownerId !== this._userId) {
       this._element.querySelector('.place__remove-button').remove()
     }
   }

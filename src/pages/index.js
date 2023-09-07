@@ -8,8 +8,8 @@ import PopupWithImage from '../components/PopupWithImage.js';
 import Section from '../components/Section.js';
 import UserInfo from '../components/UserInfo.js';
 import PopupDeleteCard from '../components/PopupDeleteCard.js';
-import Avatar from '../components/Avatar.js';
 import Api from '../components/Api.js';
+import { apiData } from '../utils/apiData.js';
 
 const profileEditButton = document.querySelector('.profile__edit-button');
 const addCardsButton = document.querySelector('.profile__add-button');
@@ -19,38 +19,33 @@ const avatarIcon = document.querySelector('.profile__avatar-edit-button');
 
 let userId;
 
-const api = new Api({
-  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-74',
-  headers: {
-    authorization: '5751a739-0b94-4196-841e-de7c785ef02a',
-    'Content-Type': 'application/json'
-  }
-});
+const api = new Api(apiData);
 
-/*Promise.all([api.getUserData(), api.getInitialCards()])
-  .then(([userInfo, initialCards]) => {
+Promise.all([api.getUserData(), api.getInitialCards()])
+  .then(([userData, cardsData]) => {
     userId = userInfo._id;
 
-    userInfo.setUserInfo(userInfo);
-    newProfilePhoto.setProfilePhoto(userInfo);
+    userInfo.setUserInfo(userData);
+    userInfo.setProfilePhoto(userData);
 
-    initialCardsRender.renderItems(initialCards);
-    console.log(initialCards)
+    initialCardsRender.renderItems(cardsData);
+    cardsData.reverse();
+    console.log(cardsData)
   })
   .catch((err) => {
     console.log(err)
-  })*/
+  })
 
 function createCard(data) {
   const card = new Card(data, userId, '#place-card', handleCardClick,
     {
       handleDeleteClick: () => {
         popupDeleteCard.open();
-        popupDeleteCard.handleSubmit(() => {
+        popupDeleteCard.setHandleSubmit(() => {
           api.deleteCard(card._id)
             .then(() => {
               card.removeCard();
-              popupDeleteCard.close
+              popupDeleteCard.close()
             })
             .catch((err) => {
               console.log(err)
@@ -96,7 +91,8 @@ const initialCardsRender = new Section({
 
 const userInfo = new UserInfo({
   profileNameSelector: '.profile__title',
-  profileJobSelector: '.profile__subtitle'
+  profileJobSelector: '.profile__subtitle',
+  profilePhotoSelector: '.profile__photo'
 });
 
 const popupEditProfile = new PopupWithForm({
@@ -127,10 +123,7 @@ function handleAddCardsSubmitForm(data) {
   renderLoading(true);
   api.addNewCard(data)
     .then((item) => {
-      const cardElement = createCard({
-        link: item.link,
-        name: item.name,
-      })
+      const cardElement = createCard(item)
       initialCardsRender.addItem(cardElement);
     })
     .catch((err) => {
@@ -151,8 +144,6 @@ function handleCardClick(name, link) {
   popupPhoto.open(name, link);
 };
 
-const newProfilePhoto = new Avatar('.profile__photo');
-
 const popupEditAvatar = new PopupWithForm({
   selector: '.popup_type_edit-avatar',
   handleSubmitForm: handleEditAvatarSubmitForm
@@ -162,7 +153,7 @@ function handleEditAvatarSubmitForm(data) {
   renderLoading(true);
   api.editAvatar(data)
     .then((item) => {
-      newProfilePhoto.setProfilePhoto(item)
+      userInfo.setProfilePhoto(item)
     })
     .catch((err) => {
       console.log(err)
@@ -187,10 +178,6 @@ const popupDeleteCard = new PopupDeleteCard('.popup_type_delete-card',
 
 popupEditAvatar.setEventListeners();
 popupDeleteCard.setEventListeners();
-
-/*function openPopupDeleteCard() {
-  popupDeleteCard.open();
-}*/
 
 const editProfileValidation = new FormValidator(config, document.querySelector('.popup_type_edit-profile')
   .querySelector('.popup__form'));
@@ -221,27 +208,8 @@ avatarIcon.addEventListener('click', () => {
   newProfilePhotoValidation.resetValidation()
 });
 
-api.getUserData()
-  .then((data) => {
-    userId = data._id;
-    userInfo.setUserInfo(data);
-    newProfilePhoto.setProfilePhoto(data)
-  })
-  .catch((err) => {
-    console.log(err)
-  })
-
-api.getInitialCards()
-  .then((data) => {
-    initialCardsRender.renderItems(data);
-    console.log(data)
-  })
-  .catch((err) => {
-    console.log(err)
-  })
-
 function renderLoading(isLoading) {
   if (isLoading) {
-    document.querySelector('.popup__submit-button').textContent = 'Сохранение'
+    document.querySelector('.popup__submit-button').textContent = 'Сохранение...'
   }
 }
